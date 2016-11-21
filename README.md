@@ -82,7 +82,7 @@ fun availableOnNetflix(available: Boolean?): Specifications<TvShow>? = available
 }
 
 fun hasKeywordIn(keywords: List<String>?): Specifications<TvShow>? = keywords?.let {
-    or(keywords.map { hasKeyword(it) })
+    TvShow::keywords.`in`(it)
 }
 
 fun hasKeyword(keyword: String?): Specifications<TvShow>? = keyword?.let {

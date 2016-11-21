@@ -22,6 +22,7 @@ private fun <T, R> KProperty1<T, R?>.spec(makePredicate: CriteriaBuilder.(path: 
 // Equality
 fun <T, R> KProperty1<T, R?>.equal(x: R): Specifications<T> = spec { equal(it, x) }
 fun <T, R> KProperty1<T, R?>.notEqual(x: R): Specifications<T> = spec { notEqual(it, x) }
+fun <T, R> KProperty1<T, R?>.`in`(x: R): Specifications<T> = spec { `in`(it).value(x) }
 
 // Comparison
 fun <T> KProperty1<T, Number?>.le(x: Number) = spec { le(it, x) }

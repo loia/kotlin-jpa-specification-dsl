@@ -105,6 +105,12 @@ open class JPASpecificationDSLTest {
     }
 
     @Test
+    fun `Get tv show by id in`() {
+        val shows = tvShowRepo.findAll(TvShow::id.`in`(setOf(hemlockGrove.id, theWalkingDead.id)))
+        assertThat(shows, containsInAnyOrder(hemlockGrove, theWalkingDead))
+    }
+
+    @Test
     fun `Get tv show by id lt`() {
         val shows = tvShowRepo.findAll(TvShow::id.lt(betterCallSaul.id))
         assertThat(shows, containsInAnyOrder(hemlockGrove, theWalkingDead))
